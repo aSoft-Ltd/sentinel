@@ -1,0 +1,5 @@
+package sentinel
+
+interface SignInApi {
+
+}
