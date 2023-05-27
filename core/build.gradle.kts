@@ -4,7 +4,7 @@ plugins {
     id("tz.co.asoft.library")
 }
 
-description = "An abstraction of the corporate authentication api"
+description = "An abstraction of authentication api"
 
 kotlin {
     jvm { library() }
@@ -18,7 +18,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.sentinelCore)
+                api(kotlinx.serialization.core)
+                api(projects.identifierLegalCore)
             }
         }
 

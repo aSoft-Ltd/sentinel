@@ -55,4 +55,5 @@ includeSubs("identifier", "../identifier", "core", "comm")
 includeSubs("identifier-legal", "../identifier/legal", "core")
 
 // submodules
-includeSubs("corporate", "corporate", "core")
+includeSubs("sentinel",".","core")
+includeSubs("sentinel-corporate", "corporate", "core")
