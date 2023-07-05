@@ -13,7 +13,7 @@ import kotlin.js.JsExport
 class CurrencyFields(output: CurrencyOutput) : Fields<CurrencyOutput>(output) {
     val currency = selectSingle(
         name = output::country,
-        items = Country.values().toList(),
+        items = Country.values().sortedBy { it.currency.name },
         mapper = { Option(it.currency.name) }
     ) { required() }
 }

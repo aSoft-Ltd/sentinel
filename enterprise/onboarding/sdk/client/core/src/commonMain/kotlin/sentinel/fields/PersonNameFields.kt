@@ -11,7 +11,7 @@ import kotlin.js.JsExport
 class PersonNameFields(output: PersonNameOutput) : Fields<PersonNameOutput>(output) {
     val name = name(
         name = output::personName,
-        label = "Business name",
-        hint = "Peperoni Inc"
+        label = "Your name",
+        hint = "John Doe"
     ) { required() }
 }

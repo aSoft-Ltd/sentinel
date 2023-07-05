@@ -1,5 +1,8 @@
 package sentinel
 
+import geo.GeoLocation
+import identifier.CorporateBranchDto
+import identifier.CorporateDto
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import keep.load
@@ -9,6 +12,7 @@ import koncurrent.later
 import koncurrent.later.await
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import pione.ApiConfigRestKtor
 import pione.PiOneConstants
@@ -48,6 +52,7 @@ class AuthenticationApiPiOne(
 
     suspend fun HttpResponse.parseSession(): UserSession {
         val text = bodyAsText()
+        println(text)
         return if (codec.decodeFromString<JsonObject>(text).isSuccess) {
             codec.decodeFromString(PiOneSingleDataSuccessResponse.serializer(UserSession.serializer()), text).obj
         } else {

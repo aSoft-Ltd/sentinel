@@ -26,7 +26,7 @@ kotlin {
             dependencies {
                 implementation(projects.cinematicLiveTest)
                 implementation(projects.kommanderCoroutines)
-                implementation(projects.flameApiTestPioneKtor)
+//                implementation(projects.flameApiTestPioneKtor)
             }
         }
     }
