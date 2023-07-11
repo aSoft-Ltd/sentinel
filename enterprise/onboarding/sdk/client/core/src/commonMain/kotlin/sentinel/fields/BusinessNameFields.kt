@@ -3,7 +3,7 @@
 
 package sentinel.fields
 
-import neat.collections.min
+import neat.min
 import neat.required
 import sentinel.AccountType
 import symphony.Fields
