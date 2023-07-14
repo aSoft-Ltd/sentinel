@@ -33,14 +33,20 @@ class AuthenticationApiPiOne(
 
     override fun signIn(params: SignInParams): Later<UserSession> = config.scope.later {
         config.logger.info("Signing `${params.email}` in")
-        client.post(path.signin) {
+        val text = client.post(path.signin) {
             setBody(params.toJson())
-        }.bodyAsText().toPiOneResponse().also {
-            cache.save(PiOneConstants.SECRET_CACHE_KEY, it.secret).await()
-            cache.save(PiOneConstants.CUSTOMER_DOMAIN_KEY, it.hostDetails.companyUrl).await()
-        }
+        }.bodyAsText()
+        val resp = codec.decodeFromString<JsonObject>(text);
+        if (resp.isSuccess) {
+            text.toPiOneResponse().also {
+                cache.save(PiOneConstants.SECRET_CACHE_KEY, it.secret).await()
+                cache.save(PiOneConstants.CUSTOMER_DOMAIN_KEY, it.hostDetails.companyUrl).await()
+            }
 
-        session().await()
+            session().await()
+        } else {
+            throw PiOneResponseException("Incorrect username or password")
+        }
     }
 
     override fun session(): Later<UserSession> = config.scope.later {
