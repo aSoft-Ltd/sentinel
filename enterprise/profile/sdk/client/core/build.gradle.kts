@@ -17,6 +17,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.sentinelEnterpriseProfileApiCore)
+                api(projects.identifierLegalSdkClientCore)
                 api(projects.symphonyInputImageCore)
                 api(projects.identifierLegalPresenters)
                 api(projects.symphonyInputIdentifier)
@@ -29,7 +30,6 @@ kotlin {
             dependencies {
                 implementation(projects.cinematicLiveTest)
                 implementation(projects.kommanderCoroutines)
-//                implementation(projects.flameApiTestPioneKtor)
             }
         }
     }

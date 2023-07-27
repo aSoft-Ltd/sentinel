@@ -25,6 +25,6 @@ class BusinessLogoScene(
     }
 
     fun deInitialize() {
-
+        
     }
 }
