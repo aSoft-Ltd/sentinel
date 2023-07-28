@@ -6,7 +6,9 @@ package sentinel
 import cinematic.LazyScene
 import identifier.IndividualDto
 import kase.Pending
+import kase.toLazyState
 import koncurrent.Later
+import koncurrent.later.finally
 import koncurrent.toLater
 import sentinel.fields.ChangePasswordFields
 import sentinel.fields.ChangePasswordOutput
@@ -19,7 +21,9 @@ class ChangePasswordScene(
     private val config: ProfileScenesConfig<ProfileApiProvider>
 ) : LazyScene<Form<IndividualDto,ChangePasswordOutput,ChangePasswordFields>>(Pending) {
 
-    fun initialize() = Later(form())
+    fun initialize() = Later(form()).finally {
+        ui.value = it.toLazyState()
+    }
 
     private fun form() = ChangePasswordFields().toForm(
         heading = "Password form",

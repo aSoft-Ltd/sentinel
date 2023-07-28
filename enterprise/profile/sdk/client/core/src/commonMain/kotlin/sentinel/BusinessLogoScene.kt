@@ -5,6 +5,7 @@ package sentinel
 
 import koncurrent.Later
 import symphony.ImageViewerUploader
+import symphony.ImageViewerUploaderState
 import kotlin.js.JsExport
 
 class BusinessLogoScene(
@@ -22,9 +23,5 @@ class BusinessLogoScene(
         it.company.image ?: throw IllegalArgumentException("No logo set")
     }.then {
         view(it)
-    }
-
-    fun deInitialize() {
-        
     }
 }
