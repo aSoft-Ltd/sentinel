@@ -9,6 +9,7 @@ import koncurrent.Later
 import koncurrent.toLater
 import sentinel.fields.SignUpFields
 import sentinel.tools.loadSignUpParams
+import sentinel.tools.removeSignUpParams
 import sentinel.tools.save
 import symphony.toForm
 import symphony.toSubmitConfig

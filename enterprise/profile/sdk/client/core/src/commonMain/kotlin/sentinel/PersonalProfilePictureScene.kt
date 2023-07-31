@@ -7,7 +7,7 @@ import koncurrent.Later
 import symphony.ImageViewerUploader
 import kotlin.js.JsExport
 
-class ProfilePictureScene(
+class PersonalProfilePictureScene(
     private val config: ProfileScenesConfig<ProfileApiProvider>
 ) : ImageViewerUploader by ImageViewerUploader(
     onUpload = { logo ->

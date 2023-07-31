@@ -1,17 +1,13 @@
 package sentinel.internal
 
-import sentinel.BusinessLogoScene
-import sentinel.ChangePasswordScene
+import sentinel.BusinessProfileScenes
+import sentinel.PersonalProfileScenes
 import sentinel.ProfileApiProvider
-import sentinel.ProfileInfoScene
-import sentinel.ProfilePictureScene
 import sentinel.ProfileScenes
 import sentinel.ProfileScenesConfig
 
 @PublishedApi
 internal class ProfileScenesImpl(config: ProfileScenesConfig<ProfileApiProvider>) : ProfileScenes {
-    override val businessLogo by lazy { BusinessLogoScene(config) }
-    override val profilePicture by lazy { ProfilePictureScene(config) }
-    override val profileInfo by lazy { ProfileInfoScene(config) }
-    override val profilePasswordChange by lazy { ChangePasswordScene(config) }
+    override val business by lazy { BusinessProfileScenes(config) }
+    override val personal by lazy { PersonalProfileScenes(config) }
 }

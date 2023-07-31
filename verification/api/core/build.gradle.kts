@@ -4,7 +4,7 @@ plugins {
     id("tz.co.asoft.library")
 }
 
-description = "An abstraction of authentication api"
+description = "A library of verification api tools"
 
 kotlin {
     jvm { library() }
@@ -18,8 +18,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.sentinelVerificationApiCore)
-                api(projects.identifierLegalDtos)
+                api(projects.kollectionsInteroperable)
+                api(kotlinx.serialization.core)
             }
         }
 

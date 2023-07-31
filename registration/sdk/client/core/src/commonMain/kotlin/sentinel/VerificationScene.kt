@@ -14,6 +14,7 @@ import koncurrent.Later
 import koncurrent.later.finally
 import sentinel.params.VerificationParams
 import sentinel.tools.loadSignUpParams
+import sentinel.tools.removeSignUpParams
 import sentinel.tools.save
 import kotlin.js.JsExport
 
@@ -30,9 +31,9 @@ class VerificationScene(
         onCompleted: (Result<VerificationParams>) -> Unit
     ): Later<Any> = cache.loadSignUpParams().andThen { params ->
         ui.value = Loading(message = "Verifying your account (${params.email}), please wait . . . ")
-        val token = parseToken(link)
-        api.verify(VerificationParams(params.email, token.getOrThrow()))
+        api.verify(VerificationParams(params.email, parseToken(link).getOrThrow()))
     }.andThen {
+        cache.removeSignUpParams()
         cache.save(it)
     }.finally {
         onCompleted(it)

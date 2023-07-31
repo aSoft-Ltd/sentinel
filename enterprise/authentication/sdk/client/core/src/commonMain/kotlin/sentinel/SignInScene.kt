@@ -1,7 +1,7 @@
 @file:JsExport
 @file:Suppress("NON_EXPORTABLE_TYPE")
 
-package sentinel.signin
+package sentinel
 
 import cinematic.Scene
 import kase.LazyState
@@ -14,11 +14,9 @@ import symphony.toForm
 import symphony.toSubmitConfig
 import kotlin.js.JsExport
 
-class SignInScene(
-    private val config: AuthenticationScenesConfig<AuthenticationApi>
-) : Scene<LazyState<UserSession>>(Pending) {
+class SignInScene(config: AuthenticationScenesConfig<AuthenticationApi>) : Scene<LazyState<UserSession>>(Pending) {
 
-    private val api get() = config.api
+    private val api = config.api
     private var successHandler: ((UserSession) -> Unit)? = null
 
     val form = SignInFields().toForm(

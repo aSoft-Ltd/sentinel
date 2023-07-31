@@ -5,6 +5,8 @@ package sentinel
 
 import sentinel.fields.SetPasswordFields
 import sentinel.tools.loadVerificationParams
+import sentinel.tools.removeVerificationParams
+import sentinel.tools.save
 import sentinel.transformers.toParams
 import symphony.toForm
 import symphony.toSubmitConfig
@@ -33,10 +35,15 @@ class SetPasswordScene(private val config: RegistrationSceneConfig<RegistrationA
             cache.loadVerificationParams().then {
                 output.toParams(it).getOrThrow()
             }.andThen {
+                cache.save(it)
+            }.andThen {
                 config.api.createUserAccount(it)
             }
         }
 
-        onSuccess { successFunction?.invoke() }
+        onSuccess {
+            cache.removeVerificationParams()
+            successFunction?.invoke()
+        }
     }
 }

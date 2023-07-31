@@ -14,7 +14,7 @@ import koncurrent.Later
 import koncurrent.later.finally
 import kotlin.js.JsExport
 
-class BarrierScope(config: AuthenticationScenesConfig<AuthenticationApi>) : BaseScene() {
+class CompleteRegistration(config: AuthenticationScenesConfig<AuthenticationApi>) : BaseScene() {
     private val api = config.api
 
     val ui = mutableLiveOf<LazyState<UserSession>>(Pending)
