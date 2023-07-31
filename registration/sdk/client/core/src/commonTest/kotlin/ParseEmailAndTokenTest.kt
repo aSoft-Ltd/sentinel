@@ -2,7 +2,7 @@ import kommander.expect
 import kommander.expectFailure
 import koncurrent.later.await
 import kotlinx.coroutines.test.runTest
-import registra.VerificationScene
+import sentinel.VerificationScene
 import kotlin.test.Test
 
 class ParseEmailAndTokenTest {

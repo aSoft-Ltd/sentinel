@@ -16,6 +16,7 @@ kotlin {
                 api(projects.sentinelRegistrationApiCore)
                 api(projects.cinematicSceneCore)
                 api(projects.hormoneCore)
+                api(projects.keepApi)
                 api(projects.symphonyInputIdentifier)
             }
         }

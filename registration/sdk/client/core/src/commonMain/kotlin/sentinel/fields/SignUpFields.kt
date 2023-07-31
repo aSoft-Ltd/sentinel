@@ -1,16 +1,15 @@
 @file:JsExport
 @file:Suppress("NON_EXPORTABLE_TYPE")
 
-package registra
+package sentinel.fields
 
 import neat.required
 import symphony.Fields
 import symphony.email
 import symphony.text
 import kotlin.js.JsExport
-import registra.params.SignUpParams as Params
 
-class SignUpFields : Fields<Params>(Params("", "")) {
+class SignUpFields : Fields<SignUpOutput>(SignUpOutput()) {
 
     val name = text(
         name = output::name,

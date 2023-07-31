@@ -1,14 +1,16 @@
-package registra
+@file:Suppress("NOTHING_TO_INLINE")
+
+package sentinel.tools
 
 import keep.Cache
-import registra.params.SignUpParams
-import registra.params.VerificationParams
+import sentinel.params.SignUpParams
+import sentinel.params.VerificationParams
 
 @PublishedApi
-internal const val KEY_SIGN_UP_PARAMS = "registra.sign.up.params"
+internal const val KEY_SIGN_UP_PARAMS = "sentinel.registration.sign.up.params"
 
 @PublishedApi
-internal const val KEY_VERIFICATION_PARAMS = "registra.verification.params"
+internal const val KEY_VERIFICATION_PARAMS = "sentinel.registration.verification.params"
 
 // --------------------------Sign Up Params --------------------------
 inline fun Cache.save(params: SignUpParams) = save(KEY_SIGN_UP_PARAMS, params, SignUpParams.serializer())
