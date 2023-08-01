@@ -33,11 +33,6 @@ class OnBoardingScene(config: OnboardingScenesConfig<ProfileApi>) : BaseScene() 
             details = "Are you an individual or business?",
             fields = AccountTypeFields(output)
         ),
-        OnBoardingStage.PersonName(
-            heading = "Enter your name",
-            details = "Whats your name?",
-            fields = PersonNameFields(output)
-        ),
         OnBoardingStage.BusinessName(
             heading = "Enter the name of your business",
             details = "Whats the name of your business?",

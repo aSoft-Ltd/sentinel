@@ -5,7 +5,7 @@ import kase.catching
 import neat.required
 
 class ChangePasswordOutput(
-    var previous: String? = "",
+    var current: String? = "",
     var password1: String? = "",
     var password2: String? = ""
 ) {
@@ -14,7 +14,7 @@ class ChangePasswordOutput(
         if(password1!=password2) throw IllegalArgumentException("The passwords do not match")
         if(current.isBlank()) throw IllegalArgumentException("Current password can never be blank")
         PasswordParams(
-            previous = ::previous.required,
+            previous = this::current.required,
             current = current
         )
     }

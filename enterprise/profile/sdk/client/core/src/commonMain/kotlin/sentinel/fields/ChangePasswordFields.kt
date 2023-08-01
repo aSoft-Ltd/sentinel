@@ -13,7 +13,7 @@ import kotlin.js.JsExport
 
 class ChangePasswordFields : Fields<ChangePasswordOutput>(ChangePasswordOutput()) {
     val current = password(
-        name = output::password1,
+        name = output::current,
         label = "Password",
         hint = "secure-password"
     ) { required() }
