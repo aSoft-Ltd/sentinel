@@ -14,7 +14,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.sentinelRegistrationApiCore)
-                api(projects.sentinelVerificationSdkClientCore)
+                api(projects.sentinelReceptionSdkClientCore)
                 api(projects.cinematicSceneCore)
                 api(projects.hormoneCore)
                 api(projects.keepApi)

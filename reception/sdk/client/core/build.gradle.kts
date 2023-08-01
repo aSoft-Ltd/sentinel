@@ -18,7 +18,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-				api(projects.sentinelVerificationApiCore)
+				api(projects.sentinelReceptionApiCore)
                 api(projects.keepApi)
             }
         }
