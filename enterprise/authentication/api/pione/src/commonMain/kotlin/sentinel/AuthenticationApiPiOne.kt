@@ -21,6 +21,7 @@ import pione.PiOneResponseException
 import pione.content
 import pione.response.PiOneFailureResponse
 import pione.response.PiOneSingleDataSuccessResponse
+import sentinel.params.PasswordResetParams
 import sentinel.params.SignInParams
 
 class AuthenticationApiPiOne(
@@ -93,5 +94,39 @@ class AuthenticationApiPiOne(
     suspend fun path(): PiOneEndpoint {
         val companyUrl = config.cache.load<String>(PiOneConstants.CUSTOMER_DOMAIN_KEY).await()
         return config.endpoint.copy(root = companyUrl)
+    }
+
+    override fun sendPasswordResetLink(email: String) = config.scope.later {
+        val text = client.post(path.sendPasswordResetLink) {
+            setBody(mapOf(
+                "email" to email
+            ))
+        }.bodyAsText()
+
+        val result = config.codec.decodeFromString(JsonObject.serializer(), text)
+
+        if (result["status"]?.jsonPrimitive?.content == "ok") {
+            email
+        } else {
+            throw RuntimeException(result["error"]?.jsonPrimitive?.content)
+        }
+    }
+
+    override fun resetPassword(params: PasswordResetParams) = config.scope.later {
+        val text = client.post(path.resetPassword) {
+            setBody(mapOf(
+                "email" to params.loginId,
+                "token" to params.passwordResetToken,
+                "password" to params.password
+            ))
+        }.bodyAsText()
+
+        val result = config.codec.decodeFromString(JsonObject.serializer(), text)
+
+        if (result["status"]?.jsonPrimitive?.content == "ok") {
+            params
+        } else {
+            throw RuntimeException(result["error"]?.jsonPrimitive?.content)
+        }
     }
 }

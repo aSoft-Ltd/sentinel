@@ -18,7 +18,13 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
+                implementation(projects.authenticatorApiRestPioneTest)
                 implementation(projects.koncurrentLaterCoroutines)
+                implementation(projects.authenticatorApiTest)
+                implementation(projects.koncurrentLaterCoroutines)
+                implementation(projects.picortexApiPione)
+                implementation(projects.pioneTest)
+
             }
         }
     }
