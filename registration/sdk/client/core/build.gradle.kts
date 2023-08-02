@@ -14,8 +14,10 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.sentinelRegistrationApiCore)
+                api(projects.sentinelReceptionSdkClientCore)
                 api(projects.cinematicSceneCore)
                 api(projects.hormoneCore)
+                api(projects.keepApi)
                 api(projects.symphonyInputIdentifier)
             }
         }

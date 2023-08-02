@@ -6,8 +6,6 @@ package sentinel
 import kotlin.js.JsExport
 
 interface ProfileScenes {
-    val businessLogo: BusinessLogoScene
-    val profilePicture: ProfilePictureScene
-    val profilePasswordChange: ChangePasswordScene
-    val profileInfo: ProfileInfoScene
+    val business: BusinessProfileScenes
+    val personal: PersonalProfileScenes
 }

@@ -4,30 +4,29 @@ plugins {
     id("tz.co.asoft.library")
 }
 
+description = "A library of verification api tools"
+
 kotlin {
     jvm { library() }
     if (Targeting.JS) js(IR) { library() }
 //    if (Targeting.WASM) wasm { library() }
-    if (Targeting.OSX) osxTargets() else listOf()
-//    if (Targeting.NDK) ndkTargets() else listOf()
-    if (Targeting.LINUX) linuxTargets() else listOf()
-    if (Targeting.MINGW) mingwTargets() else listOf()
+    val osxTargets = if (Targeting.OSX) osxTargets() else listOf()
+    val ndkTargets = if (Targeting.NDK) ndkTargets() else listOf()
+    val linuxTargets = if (Targeting.LINUX) linuxTargets() else listOf()
+    val mingwTargets = if (Targeting.MINGW) mingwTargets() else listOf()
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.sentinelEnterpriseAuthenticationApiCore)
-                api(projects.sentinelReceptionSdkClientCore)
+				api(projects.sentinelReceptionApiCore)
                 api(projects.keepApi)
-                api(projects.symphonyInputIdentifier)
-                api(projects.cinematicSceneCore)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.cinematicLiveTest)
                 implementation(projects.kommanderCoroutines)
+                implementation(kotlinx.serialization.json)
             }
         }
     }
