@@ -34,6 +34,7 @@ fun AuthenticationApiProviderPiOneTest() : PiCortexApiPiOne {
         serializer = Unit.serializer(),
         toPiOne = { _, _ -> null },
         fromPiOne = { null },
-        verificationUrl = "$url/verify"
+        verificationUrl = "$url/verify",
+        passwordResetUrl = "$url/reset-password",
     ))
 }

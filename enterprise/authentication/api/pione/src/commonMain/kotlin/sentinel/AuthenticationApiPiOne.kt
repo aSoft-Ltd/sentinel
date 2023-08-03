@@ -12,20 +12,25 @@ import koncurrent.later
 import koncurrent.later.await
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
+import kotlinx.serialization.json.put
+import kotlinx.serialization.json.putJsonObject
 import pione.ApiConfigRestKtor
 import pione.PiOneConstants
 import pione.PiOneEndpoint
 import pione.PiOneResponseException
 import pione.content
+import pione.json
 import pione.response.PiOneFailureResponse
 import pione.response.PiOneSingleDataSuccessResponse
 import sentinel.params.PasswordResetParams
+import sentinel.params.SendPasswordResetParams
 import sentinel.params.SignInParams
 
 class AuthenticationApiPiOne(
-    private val config: ApiConfigRestKtor<PiOneEndpoint>
+    private val config: AuthenticationApiPiOneConfig<PiOneEndpoint>
 ) : AuthenticationApi {
     private val client get() = config.http
     private val path get() = config.endpoint
@@ -98,9 +103,12 @@ class AuthenticationApiPiOne(
 
     override fun sendPasswordResetLink(email: String) = config.scope.later {
         val text = client.post(path.sendPasswordResetLink) {
-            setBody(mapOf(
-                "email" to email
-            ))
+            setBody(config.json {
+                putJsonObject("body") {
+                    put("email", email)
+                    put("url", config.passwordResetUrl)
+                }
+            })
         }.bodyAsText()
 
         val result = config.codec.decodeFromString(JsonObject.serializer(), text)
@@ -114,11 +122,13 @@ class AuthenticationApiPiOne(
 
     override fun resetPassword(params: PasswordResetParams) = config.scope.later {
         val text = client.post(path.resetPassword) {
-            setBody(mapOf(
-                "email" to params.loginId,
-                "token" to params.passwordResetToken,
-                "password" to params.password
-            ))
+            setBody(config.json {
+                putJsonObject("body") {
+//                    put("email", params.loginId)
+                    put("token", params.passwordResetToken)
+                    put("password", params.password)
+                }
+            })
         }.bodyAsText()
 
         val result = config.codec.decodeFromString(JsonObject.serializer(), text)
