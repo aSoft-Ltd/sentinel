@@ -12,12 +12,12 @@ import kase.Result
 import kase.bagOf
 import koncurrent.Later
 import koncurrent.later.finally
+import koncurrent.toLater
 import neat.required
 import sentinel.fields.AccountTypeFields
 import sentinel.fields.AddressFields
 import sentinel.fields.BusinessNameFields
 import sentinel.fields.CurrencyFields
-import sentinel.fields.PersonNameFields
 import symphony.Visibility
 import symphony.toForm
 import symphony.toSubmitConfig
@@ -67,24 +67,17 @@ class OnBoardingScene(config: OnboardingScenesConfig<ProfileApi>) : BaseScene() 
         completionHandler.clean()
     }
 
-    private fun completeOnBoarding(): Later<Any> {
-        val country = output::country.required
-        val personName = output::personName.required
-        val business = output.businessName ?: personName
-        val address = output.address
-
-        return Later(IndividualProfileParams(name=personName, location = address)).andThen {
-            api.personal.update(it)
-        }.andThen {
-            api.organisation.updateCurrency(country.currency)
-        }.then {
-            CorporateParams(name = business, hqLocation = address)
-        }.andThen {
-            api.organisation.update(it)
-        }.then {
-            it.toPresenter()
-        }.finally {
-            completionHandler.value?.invoke(it)
-        }
+    private fun completeOnBoarding() = output.toLater().then {
+        it.toCurrency().getOrThrow()
+    }.andThen {
+        api.organisation.updateCurrency(it)
+    }.then {
+        output.toParams().getOrThrow()
+    }.andThen {
+        api.organisation.update(it)
+    }.then {
+        it.toPresenter()
+    }.finally {
+        completionHandler.value?.invoke(it)
     }
 }
