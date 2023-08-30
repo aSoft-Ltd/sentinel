@@ -6,6 +6,7 @@ package sentinel.fields
 import neat.Invalid
 import neat.Valid
 import neat.execute
+import neat.min
 import neat.required
 import symphony.Fields
 import symphony.password
@@ -17,13 +18,17 @@ class SetPasswordFields : Fields<SetPasswordOutput>(SetPasswordOutput()) {
         name = output::password1,
         label = "Password",
         hint = "secure-password"
-    ) { required() }
+    ) {
+        min(8)
+        required()
+    }
 
     val password2 = password(
         name = output::password2,
         label = "Confirm password",
         hint = "secure-password",
     ) {
+        min(8)
         execute {
             when {
                 password1.output == it -> Valid(it)

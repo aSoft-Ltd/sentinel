@@ -26,8 +26,7 @@ kotlin {
                 implementation(projects.koncurrentLaterCoroutines)
                 implementation(projects.kommanderCoroutines)
                 implementation(projects.keepMock)
-                implementation(projects.authenticatorApiRestPioneKtor)
-                implementation(projects.bitframeServiceBuilderApiMock)
+                implementation(projects.sentinelEnterpriseAuthenticationApiPione)
             }
         }
 
