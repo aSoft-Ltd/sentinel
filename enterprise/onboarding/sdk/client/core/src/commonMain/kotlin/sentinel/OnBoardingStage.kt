@@ -4,9 +4,10 @@
 package sentinel
 
 import sentinel.fields.AccountTypeFields
+import sentinel.fields.AddressFields
 import sentinel.fields.BusinessNameFields
 import sentinel.fields.CurrencyFields
-import sentinel.fields.AddressFields
+import sentinel.fields.LocationFields
 import symphony.FormStage
 import kotlin.js.JsExport
 
@@ -35,8 +36,15 @@ sealed class OnBoardingStage : FormStage {
         override val fields: AddressFields
     ) : OnBoardingStage()
 
+    data class Location(
+        override val heading: String,
+        override val details: String,
+        override val fields: LocationFields
+    ) : OnBoardingStage()
+
     val asAccount get() = this as? Account
     val asBusinessName get() = this as? BusinessName
     val asCurrency get() = this as? Currency
     val asAddress get() = this as? Address
+    val asLocation get() = this as? Location
 }

@@ -14,5 +14,6 @@ fun IndividualOutput.toProfileParams() = catching {
         idDocumentNumber = idNumber,
         idDocumentType = idType,
         location = location,
+        address = address,
     )
 }

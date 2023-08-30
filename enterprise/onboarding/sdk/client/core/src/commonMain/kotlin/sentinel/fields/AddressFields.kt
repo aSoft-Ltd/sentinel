@@ -5,8 +5,13 @@ package sentinel.fields
 
 import symphony.Fields
 import symphony.location
+import symphony.text
 import kotlin.js.JsExport
 
 class AddressFields(output: AddressOutput) : Fields<AddressOutput>(output) {
-    val address = location(name = output::address)
+    val address = text(
+        name = output::address,
+        label = "Business Address",
+        hint = "4th Floor, 301 Sixth Street"
+    )
 }

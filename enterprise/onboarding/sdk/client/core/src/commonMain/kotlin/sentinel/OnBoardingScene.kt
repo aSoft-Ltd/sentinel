@@ -5,17 +5,14 @@ package sentinel
 
 import cinematic.BaseScene
 import identifier.CorporatePresenter
-import identifier.params.CorporateParams
-import identifier.params.IndividualProfileParams
 import identifier.transformers.toPresenter
 import kase.Result
 import kase.bagOf
-import koncurrent.Later
 import koncurrent.later.finally
 import koncurrent.toLater
-import neat.required
 import sentinel.fields.AccountTypeFields
 import sentinel.fields.AddressFields
+import sentinel.fields.LocationFields
 import sentinel.fields.BusinessNameFields
 import sentinel.fields.CurrencyFields
 import symphony.Visibility
@@ -47,6 +44,11 @@ class OnBoardingScene(config: OnboardingScenesConfig<ProfileApi>) : BaseScene() 
             heading = "Enter your operating address",
             details = "Where are you operating from?",
             fields = AddressFields(output)
+        ),
+        OnBoardingStage.Location(
+            heading = "Enter your operating address",
+            details = "Where are you operating from?",
+            fields = LocationFields(output)
         )
     ).toForm(
         output = output,
