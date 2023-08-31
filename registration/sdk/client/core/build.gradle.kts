@@ -16,7 +16,7 @@ kotlin {
                 api(projects.sentinelRegistrationApiCore)
                 api(projects.sentinelReceptionSdkClientCore)
                 api(libs.cinematic.scene.core)
-                api(projects.hormoneCore)
+                api(libs.hormone.core)
                 api(libs.keep.api)
                 api(projects.symphonyInputIdentifier)
             }
