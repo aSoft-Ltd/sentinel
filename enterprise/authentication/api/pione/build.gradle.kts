@@ -19,8 +19,8 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(projects.sentinelEnterpriseAuthenticationApiPione)
-                implementation(projects.koncurrentLaterCoroutines)
-                implementation(projects.koncurrentLaterCoroutines)
+                implementation(libs.koncurrent.later.coroutines)
+                implementation(libs.koncurrent.later.coroutines)
                 implementation(projects.picortexApiPione)
                 implementation(projects.pioneTest)
             }

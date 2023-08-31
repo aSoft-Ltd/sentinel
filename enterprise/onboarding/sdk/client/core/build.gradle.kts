@@ -21,7 +21,7 @@ kotlin {
                 api(projects.symphonyInputIdentifier)
                 api(projects.symphonyInputGeo)
                 api(projects.cinematicSceneCore)
-                api(projects.kaseOptional)
+                api(libs.kase.optional)
             }
         }
 
