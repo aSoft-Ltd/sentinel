@@ -18,7 +18,7 @@ kotlin {
             dependencies {
                 api(projects.sentinelEnterpriseAuthenticationApiCore)
                 api(projects.sentinelReceptionSdkClientCore)
-                api(projects.keepApi)
+                api(libs.keep.api)
                 api(projects.symphonyInputIdentifier)
                 api(libs.cinematic.scene.core)
             }
