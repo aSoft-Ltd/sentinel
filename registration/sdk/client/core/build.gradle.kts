@@ -15,7 +15,7 @@ kotlin {
             dependencies {
                 api(projects.sentinelRegistrationApiCore)
                 api(projects.sentinelReceptionSdkClientCore)
-                api(projects.cinematicSceneCore)
+                api(libs.cinematic.scene.core)
                 api(projects.hormoneCore)
                 api(projects.keepApi)
                 api(projects.symphonyInputIdentifier)
@@ -24,7 +24,7 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                api(projects.cinematicLiveTest)
+                api(libs.cinematic.live.test)
                 api(libs.kommander.coroutines)
             }
         }

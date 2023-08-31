@@ -20,13 +20,13 @@ kotlin {
                 api(projects.sentinelReceptionSdkClientCore)
                 api(projects.keepApi)
                 api(projects.symphonyInputIdentifier)
-                api(projects.cinematicSceneCore)
+                api(libs.cinematic.scene.core)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.cinematicLiveTest)
+                implementation(libs.cinematic.live.test)
                 implementation(libs.kommander.coroutines)
             }
         }

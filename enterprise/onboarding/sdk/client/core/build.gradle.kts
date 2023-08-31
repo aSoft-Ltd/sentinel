@@ -20,14 +20,14 @@ kotlin {
                 api(projects.identifierLegalPresenters)
                 api(projects.symphonyInputIdentifier)
                 api(projects.symphonyInputGeo)
-                api(projects.cinematicSceneCore)
+                api(libs.cinematic.scene.core)
                 api(libs.kase.optional)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.cinematicLiveTest)
+                implementation(libs.cinematic.live.test)
                 implementation(libs.kommander.coroutines)
 //                implementation(projects.flameApiTestPioneKtor)
             }
