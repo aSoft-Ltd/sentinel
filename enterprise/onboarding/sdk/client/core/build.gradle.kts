@@ -17,7 +17,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.sentinelEnterpriseProfileApiCore)
-                api(projects.identifierLegalPresenters)
+                api(libs.identifier.legal.presenters)
                 api(projects.symphonyInputIdentifier)
                 api(projects.symphonyInputGeo)
                 api(libs.cinematic.scene.core)

@@ -19,7 +19,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.sentinelReceptionApiCore)
-                api(projects.identifierLegalDtos)
+                api(libs.identifier.legal.dtos)
             }
         }
 

@@ -19,7 +19,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(kotlinx.serialization.core)
-                api(projects.identifierLegalDtos)
+                api(libs.identifier.legal.dtos)
             }
         }
 
