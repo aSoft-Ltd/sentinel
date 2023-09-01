@@ -12,17 +12,16 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.sentinelEnterpriseAuthenticationApiCore)
-                api(projects.pioneRest)
+                api(libs.pione.rest)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.sentinelEnterpriseAuthenticationApiPione)
+//                implementation(projects.sentinelEnterpriseAuthenticationApiPione)
                 implementation(libs.koncurrent.later.coroutines)
                 implementation(libs.koncurrent.later.coroutines)
-                implementation(projects.picortexApiPione)
-                implementation(projects.pioneTest)
+                implementation(libs.pione.test)
             }
         }
     }

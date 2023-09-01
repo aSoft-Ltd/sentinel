@@ -1,26 +1,11 @@
-pluginManagement {
-    enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-    repositories {
-        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
-        mavenCentral()
-        google()
-        gradlePluginPortal()
-    }
+import java.io.File
 
-    dependencyResolutionManagement {
-        versionCatalogs {
-            File(rootDir.parentFile, "versions/gradle/versions").listFiles().map {
-                it.nameWithoutExtension to it.absolutePath
-            }.forEach { (name, path) ->
-                create(name) { from(files(path)) }
-            }
-        }
-    }
+pluginManagement {
+    includeBuild("../build-logic")
 }
 
-fun includeRoot(name: String, path: String) {
-    include(":$name")
-    project(":$name").projectDir = File(path)
+plugins {
+    id("multimodule")
 }
 
 fun includeSubs(base: String, path: String = base, vararg subs: String) {
@@ -30,30 +15,20 @@ fun includeSubs(base: String, path: String = base, vararg subs: String) {
     }
 }
 
+listOf(
+    "cinematic", "keep", "lexi", "captain", "neat", "kash", "geo", "kase",
+    "kronecker", "symphony", "epsilon", "krono", "hormone", "identifier",
+    "kommerce", "kollections", "koncurrent", "kommander", "cabinet", "pione"
+).forEach { includeBuild("../$it") }
+
 rootProject.name = "sentinel"
 
-includeBuild("../able")
-// dependencies
-includeSubs("functions", "../functions", "core")
-includeSubs("kommander", "../kommander", "core", "coroutines")
-includeSubs("kollections", "../kollections", "interoperable", "atomic")
-includeSubs("koncurrent-executors", "../koncurrent/executors", "core", "coroutines", "mock")
-includeSubs("koncurrent-later", "../koncurrent/later", "api", "core", "coroutines", "test")
-includeSubs("kevlar", "../kevlar", "api", "core")
-includeSubs("kase", "../kase", "core")
-includeSubs("cinematic-live", "../cinematic/live", "core", "kollections", "coroutines", "test", "compose")
-includeSubs("krono", "../krono", "api", "kotlinx")
-includeSubs("epsilon", "../epsilon", "core")
-includeSubs("liquid", "../liquid", "number")
-includeSubs("kronecker", "../kronecker", "core")
-includeBuild("../kash/currency-generator")
-includeSubs("kash", "../kash", "currency")
-includeBuild("../geo/geo-generator")
-includeSubs("geo", "../geo", "core", "countries")
-includeSubs("hormone", "../hormone", "core")
-includeSubs("identifier", "../identifier", "core", "comm")
-includeSubs("identifier-legal", "../identifier/legal", "core")
-
-// submodules
-includeSubs("sentinel",".","core")
-includeSubs("sentinel-corporate", "corporate", "core")
+includeSubs(base = "sentinel-reception-api", path = "../sentinel/reception/api", "core")
+includeSubs(base = "sentinel-reception-sdk-client", path = "../sentinel/reception/sdk/client", "core")
+includeSubs(base = "sentinel-registration-api", path = "../sentinel/registration/api", "core", "pione")
+includeSubs(base = "sentinel-registration-sdk-client", path = "../sentinel/registration/sdk/client", "core")
+includeSubs(base = "sentinel-enterprise-authentication-api", path = "../sentinel/enterprise/authentication/api", "core", "pione")
+includeSubs(base = "sentinel-enterprise-authentication-sdk-client", path = "../sentinel/enterprise/authentication/sdk/client", "core")
+includeSubs(base = "sentinel-enterprise-profile-api", path = "../sentinel/enterprise/profile/api", "core", "pione")
+includeSubs(base = "sentinel-enterprise-profile-sdk-client", path = "../sentinel/enterprise/profile/sdk/client", "core")
+includeSubs(base = "sentinel-enterprise-onboarding-sdk-client", path = "../sentinel/enterprise/onboarding/sdk/client", "core")

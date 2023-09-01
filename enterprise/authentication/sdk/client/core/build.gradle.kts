@@ -19,7 +19,7 @@ kotlin {
                 api(projects.sentinelEnterpriseAuthenticationApiCore)
                 api(projects.sentinelReceptionSdkClientCore)
                 api(libs.keep.api)
-                api(projects.symphonyInputIdentifier)
+//                api(projects.symphonyInputIdentifier)
                 api(libs.cinematic.scene.core)
             }
         }

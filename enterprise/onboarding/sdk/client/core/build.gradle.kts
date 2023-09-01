@@ -18,8 +18,8 @@ kotlin {
             dependencies {
                 api(projects.sentinelEnterpriseProfileApiCore)
                 api(libs.identifier.legal.presenters)
-                api(projects.symphonyInputIdentifier)
-                api(projects.symphonyInputGeo)
+//                api(projects.symphonyInputIdentifier)
+//                api(projects.symphonyInputGeo)
                 api(libs.cinematic.scene.core)
                 api(libs.kase.optional)
             }

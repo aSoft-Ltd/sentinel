@@ -18,7 +18,7 @@ kotlin {
                 api(libs.cinematic.scene.core)
                 api(libs.hormone.core)
                 api(libs.keep.api)
-                api(projects.symphonyInputIdentifier)
+//                api(projects.symphonyInputIdentifier)
             }
         }
 

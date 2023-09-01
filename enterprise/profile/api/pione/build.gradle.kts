@@ -12,7 +12,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.sentinelEnterpriseProfileApiCore)
-                api(projects.pioneRest)
+                api(libs.pione.rest)
             }
         }
 

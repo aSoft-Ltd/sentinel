@@ -16,17 +16,17 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.sentinelRegistrationApiCore)
-                api(projects.pioneRest)
+                api(libs.pione.rest)
             }
         }
 
         val commonTest by getting {
             kotlin.srcDirs(generated)
             dependencies {
+                implementation(projects.sentinelEnterpriseAuthenticationApiPione)
                 implementation(libs.koncurrent.later.coroutines)
                 implementation(libs.kommander.coroutines)
                 implementation(libs.keep.mock)
-                implementation(projects.sentinelEnterpriseAuthenticationApiPione)
             }
         }
 
