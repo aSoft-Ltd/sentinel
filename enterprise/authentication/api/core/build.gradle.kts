@@ -19,13 +19,13 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(kotlinx.serialization.core)
-                api(projects.identifierLegalDtos)
+                api(libs.identifier.legal.dtos)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.kommanderCoroutines)
+                implementation(libs.kommander.coroutines)
                 implementation(kotlinx.serialization.json)
             }
         }

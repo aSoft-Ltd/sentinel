@@ -17,19 +17,19 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.sentinelEnterpriseProfileApiCore)
-                api(projects.identifierLegalSdkClientCore)
+                api(libs.identifier.legal.sdk.client.core)
                 api(projects.symphonyInputImageCore)
-                api(projects.identifierLegalPresenters)
+                api(libs.identifier.legal.presenters)
                 api(projects.symphonyInputIdentifier)
                 api(projects.symphonyInputGeo)
-                api(projects.cinematicSceneCore)
+                api(libs.cinematic.scene.core)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.cinematicLiveTest)
-                implementation(projects.kommanderCoroutines)
+                implementation(libs.cinematic.live.test)
+                implementation(libs.kommander.coroutines)
             }
         }
     }

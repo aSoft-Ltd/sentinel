@@ -18,16 +18,16 @@ kotlin {
             dependencies {
                 api(projects.sentinelEnterpriseAuthenticationApiCore)
                 api(projects.sentinelReceptionSdkClientCore)
-                api(projects.keepApi)
+                api(libs.keep.api)
                 api(projects.symphonyInputIdentifier)
-                api(projects.cinematicSceneCore)
+                api(libs.cinematic.scene.core)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.cinematicLiveTest)
-                implementation(projects.kommanderCoroutines)
+                implementation(libs.cinematic.live.test)
+                implementation(libs.kommander.coroutines)
             }
         }
     }

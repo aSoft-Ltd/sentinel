@@ -18,14 +18,14 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.kollectionsInteroperable)
+                api(libs.kollections.interoperable)
                 api(kotlinx.serialization.core)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.kommanderCoroutines)
+                implementation(libs.kommander.coroutines)
                 implementation(kotlinx.serialization.json)
             }
         }

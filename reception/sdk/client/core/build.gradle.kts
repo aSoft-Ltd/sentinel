@@ -19,13 +19,13 @@ kotlin {
         val commonMain by getting {
             dependencies {
 				api(projects.sentinelReceptionApiCore)
-                api(projects.keepApi)
+                api(libs.keep.api)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.kommanderCoroutines)
+                implementation(libs.kommander.coroutines)
                 implementation(kotlinx.serialization.json)
             }
         }

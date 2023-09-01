@@ -23,9 +23,9 @@ kotlin {
         val commonTest by getting {
             kotlin.srcDirs(generated)
             dependencies {
-                implementation(projects.koncurrentLaterCoroutines)
-                implementation(projects.kommanderCoroutines)
-                implementation(projects.keepMock)
+                implementation(libs.koncurrent.later.coroutines)
+                implementation(libs.kommander.coroutines)
+                implementation(libs.keep.mock)
                 implementation(projects.sentinelEnterpriseAuthenticationApiPione)
             }
         }
