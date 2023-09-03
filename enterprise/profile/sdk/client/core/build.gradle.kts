@@ -20,7 +20,7 @@ kotlin {
                 api(libs.identifier.legal.sdk.client.core)
 //                api(projects.symphonyInputImageCore)
                 api(libs.identifier.legal.presenters)
-//                api(projects.symphonyInputIdentifier)
+                api(libs.identifier.fields)
 //                api(projects.symphonyInputGeo)
                 api(libs.cinematic.scene.core)
             }
