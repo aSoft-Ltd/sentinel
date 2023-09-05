@@ -18,10 +18,10 @@ kotlin {
             dependencies {
                 api(projects.sentinelEnterpriseProfileApiCore)
                 api(libs.identifier.legal.sdk.client.core)
-//                api(projects.symphonyInputImageCore)
+                api(libs.epsilon.image.core)
                 api(libs.identifier.legal.presenters)
                 api(libs.identifier.fields)
-//                api(projects.symphonyInputGeo)
+                api(libs.geo.fields)
                 api(libs.cinematic.scene.core)
             }
         }
