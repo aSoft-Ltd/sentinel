@@ -21,6 +21,7 @@ kotlin {
                 api(libs.keep.api)
                 api(libs.identifier.fields)
                 api(libs.cinematic.scene.core)
+                api(libs.snitch.api)
             }
         }
 

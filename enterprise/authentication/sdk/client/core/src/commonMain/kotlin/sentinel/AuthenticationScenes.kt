@@ -5,8 +5,9 @@ package sentinel
 
 import kotlin.js.JsExport
 
-interface AuthenticationScenes {
-    val signIn: SignInScene
-    val barrier: BarrierScene
-    val registration: RegistrationScene
+class AuthenticationScenes(config: AuthenticationScenesConfig<AuthenticationApi>) {
+    val signIn by lazy { SignInScene(config) }
+    val barrier by lazy { BarrierScene(config) }
+    val registration by lazy { RegistrationScene(config) }
+    val password by lazy { PasswordScenes(config) }
 }

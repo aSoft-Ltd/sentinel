@@ -1,8 +1,6 @@
 @file:JsExport
 package sentinel.params
 
-import kollections.List
-
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 
