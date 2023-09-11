@@ -56,6 +56,7 @@ class PasswordResetScene(
         super.deInitialize()
     }
 
+    @Deprecated("""TODO: Use captain.url.query["token"]""")
     private fun parseToken(link: String): Result<String> {
         val query = link.split("?").getOrNull(1) ?: return Failure(IllegalArgumentException("No query params found"))
         val token = query.split("=").getOrNull(1) ?: return Failure(IllegalArgumentException("Couldn't get reset token from query params"))
