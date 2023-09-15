@@ -4,7 +4,7 @@
 package sentinel.fields
 
 import symphony.Fields
-import symphony.location
+import geo.location
 import kotlin.js.JsExport
 
 class LocationFields(output: LocationOutput) : Fields<LocationOutput>(output) {

@@ -4,7 +4,6 @@
 package sentinel.fields
 
 import symphony.Fields
-import symphony.location
 import symphony.text
 import kotlin.js.JsExport
 
