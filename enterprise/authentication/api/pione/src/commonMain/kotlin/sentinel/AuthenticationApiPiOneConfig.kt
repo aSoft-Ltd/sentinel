@@ -2,6 +2,6 @@ package sentinel
 
 import pione.ApiConfigRestKtor
 
-interface AuthenticationApiPiOneConfig<E> : ApiConfigRestKtor<E> {
+interface AuthenticationApiPiOneConfig<out E> : ApiConfigRestKtor<E> {
     val passwordResetUrl: String
 }
