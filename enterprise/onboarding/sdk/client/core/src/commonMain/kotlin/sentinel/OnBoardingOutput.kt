@@ -1,12 +1,13 @@
 package sentinel
 
+import geo.AddressOutput
 import geo.Country
 import geo.GeoLocation
 import identifier.params.CorporateParams
 import kase.catching
 import neat.required
 import sentinel.fields.AccountTypeOutput
-import sentinel.fields.AddressOutput
+import sentinel.fields.OnboardingAddressOutput
 import sentinel.fields.LocationOutput
 import sentinel.fields.BusinessNameOutput
 import sentinel.fields.CurrencyOutput
@@ -16,14 +17,14 @@ data class OnBoardingOutput(
     override var businessName: String? = null,
     override var country: Country? = null,
     override var location: GeoLocation? = null,
-    override var address: String? = null,
+    override var address: AddressOutput? = null,
     var tax: Int? = null
-) : AccountTypeOutput, BusinessNameOutput, AddressOutput, LocationOutput, CurrencyOutput {
+) : AccountTypeOutput, BusinessNameOutput, OnboardingAddressOutput, LocationOutput, CurrencyOutput {
     fun toParams() = catching {
         CorporateParams(
             name = this::businessName.required,
             hqLocation = location,
-            address = address
+            address = address?.toDto()?.getOrThrow()
         )
     }
 

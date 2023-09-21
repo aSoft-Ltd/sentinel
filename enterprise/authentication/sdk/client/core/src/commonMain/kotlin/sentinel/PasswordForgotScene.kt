@@ -6,6 +6,7 @@ package sentinel
 import cinematic.LazyScene
 import kase.Pending
 import kase.Success
+import keep.save
 import koncurrent.toLater
 import neat.required
 import sentinel.fields.PasswordForgotFields
@@ -32,8 +33,12 @@ class PasswordForgotScene(
     ) {
         onCancel { ui.value = Pending }
         onSubmit { output ->
-            output.toLater().andThen {
-                api.sendPasswordResetLink(it::email.required)
+            output.toLater().then {
+                it::email.required
+            }.andThen {
+                config.cache.save(PasswordScenes.KEY_RESET_EMAIL,it)
+            }.andThen {
+                api.sendPasswordResetLink(it)
             }
         }
         onSuccess { email: String ->

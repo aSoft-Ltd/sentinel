@@ -12,7 +12,6 @@ import koncurrent.later.finally
 import koncurrent.toLater
 import sentinel.fields.AccountTypeFields
 import sentinel.fields.AddressFields
-import sentinel.fields.LocationFields
 import sentinel.fields.BusinessNameFields
 import sentinel.fields.CurrencyFields
 import symphony.Visibility
@@ -23,6 +22,8 @@ import kotlin.js.JsExport
 class OnBoardingScene(config: OnboardingScenesConfig<ProfileApi>) : BaseScene() {
 
     private val output = OnBoardingOutput()
+
+    private val af = AddressFields(output)
 
     val form = listOf(
         OnBoardingStage.Account(
@@ -38,18 +39,17 @@ class OnBoardingScene(config: OnboardingScenesConfig<ProfileApi>) : BaseScene() 
         OnBoardingStage.Currency(
             heading = "Choose your default currency",
             details = "Which currency are you operating in?",
-            fields = CurrencyFields(output)
+            fields = CurrencyFields(output),
+            onNext = {
+                if (output.address != null) return@Currency
+                af.address.country.set(output.country)
+            }
         ),
         OnBoardingStage.Address(
             heading = "Enter your operating address",
             details = "Where are you operating from?",
-            fields = AddressFields(output)
+            fields = af
         ),
-        OnBoardingStage.Location(
-            heading = "Enter your operating address",
-            details = "Where are you operating from?",
-            fields = LocationFields(output)
-        )
     ).toForm(
         output = output,
         config = config.toSubmitConfig(),

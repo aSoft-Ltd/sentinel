@@ -3,14 +3,13 @@
 
 package sentinel.fields
 
+import geo.address
 import symphony.Fields
-import symphony.text
 import kotlin.js.JsExport
 
-class AddressFields(output: AddressOutput) : Fields<AddressOutput>(output) {
-    val address = text(
+class AddressFields(output: OnboardingAddressOutput) : Fields<OnboardingAddressOutput>(output) {
+    val address = address(
         name = output::address,
-        label = "Business Address",
-        hint = "4th Floor, 301 Sixth Street"
+        label = "Business Address"
     )
 }

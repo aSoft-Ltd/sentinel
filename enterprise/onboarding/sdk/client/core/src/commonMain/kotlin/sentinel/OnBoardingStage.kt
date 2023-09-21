@@ -27,7 +27,8 @@ sealed class OnBoardingStage : FormStage {
     data class Currency(
         override val heading: String,
         override val details: String,
-        override val fields: CurrencyFields
+        override val fields: CurrencyFields,
+        override val onNext: () -> Unit
     ) : OnBoardingStage()
 
     data class Address(
@@ -36,15 +37,8 @@ sealed class OnBoardingStage : FormStage {
         override val fields: AddressFields
     ) : OnBoardingStage()
 
-    data class Location(
-        override val heading: String,
-        override val details: String,
-        override val fields: LocationFields
-    ) : OnBoardingStage()
-
     val asAccount get() = this as? Account
     val asBusinessName get() = this as? BusinessName
     val asCurrency get() = this as? Currency
     val asAddress get() = this as? Address
-    val asLocation get() = this as? Location
 }

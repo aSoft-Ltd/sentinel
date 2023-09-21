@@ -8,9 +8,13 @@ import kase.Failure
 import kase.Pending
 import kase.Result
 import kase.Success
+import keep.load
+import koncurrent.later.finally
+import koncurrent.later.zip
 import koncurrent.toLater
 import sentinel.fields.PasswordResetFields
 import sentinel.fields.PasswordResetOutput
+import sentinel.params.SignInParams
 import sentinel.transformers.toParams
 import symphony.Form
 import symphony.toForm
@@ -44,6 +48,12 @@ class PasswordResetScene(
                 it.toParams(token).getOrThrow()
             }.andThen {
                 api.resetPassword(it)
+            }.zip(config.cache.load<String>(PasswordScenes.KEY_RESET_EMAIL)) { (params, email) ->
+                SignInParams(email = email, params.password)
+            }.andThen {
+                api.signIn(it)
+            }.finally {
+                config.cache.remove(PasswordScenes.KEY_RESET_EMAIL)
             }
         }
 
