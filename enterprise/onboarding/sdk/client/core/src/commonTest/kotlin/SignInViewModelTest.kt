@@ -1,8 +1,8 @@
 import authenticator.SignInParams
 import authenticator.signin.SignInState
 import authenticator.signin.UnInitialized
-import expect.expect
-import expect.toBe
+import kommander.expect
+import kommander.toBe
 import kommander.expect
 import kotlinx.coroutines.test.runTest
 import picortex.PiCortexAppScenes

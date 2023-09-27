@@ -1,6 +1,6 @@
 package astrab
 
-import expect.expect
+import kommander.expect
 import kommander.expect
 import kotlin.test.Ignore
 import kotlin.test.Test
