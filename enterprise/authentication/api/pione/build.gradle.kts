@@ -11,7 +11,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.sentinelEnterpriseAuthenticationApiCore)
+                api(libs.sentinel.enterprise.authentication.api.core)
                 api(libs.pione.rest)
             }
         }
